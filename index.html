@@ -33,33 +33,63 @@
         <div class="song-list">
           <div id="song1" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song2" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song3" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song4" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song5" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song6" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song7" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song8" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song9" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
           <div id="song10" class="song">
             <span class="song-name"> </span>
+            <span class="song-artist"> </span>
+            <span class="song-album">        </span>
+            <span class="song-length pull-right"> </span>
           </div>
 
         </div>
@@ -72,7 +102,9 @@
           <div class="progress-wrapper">
             <span class="time-elapsed"> </span>
             <div class="player-progress">
-              <div class="progress-filled"> </div>
+              <div class="progress-filled">
+
+              </div>
             </div>
             <span class="song-duration"></span>
           </div>
@@ -144,6 +176,13 @@
       duration = fancyTimeFormat(duration)
       $('.time-elapsed').text(currentTime);
       $('.song-duration').text(duration);
+
+      song.addEventListener("timeupdate", function() {
+
+        $('.player-progress').stop(true, true).animate({
+          'width': (currentTime + .25) / duration * 100 + '%'
+        }, 250, 'linear');
+      });
     }
 
     window.onload = function() {
@@ -152,11 +191,11 @@
         updateCurrentTime();
       }, 1000);
     }
-    var fileNames = ['song1.mp3', 'song2.mp3', 'song3.mp3', 'song4.mp3','song5.mp3', 'song6.mp3', 'song7.mp3', 'song8.mp3','song9.mp3', 'song10.mp3'];
-    var songList = ['Tamma Song', 'Humma Song', 'Nashe Si Chadh Gayi', 'The Breakup Song','Chiz bari mast','Dooriyan','Hawa Hawa ','High Rated - Guru ','Teri Call','Yaari Ft Deep Jandu'];
-    var artistList = ['Artist #1', 'Artist #2', 'Artist #3', 'Artist #4'];
-    var albumList = ['Badrinath ki Dulhania', 'Ok Jaanu', 'Befikre', 'Ae Dil Hai Mushkil'];
-    var durationList = ['2:56', '3:15', '2:34', '2:29'];
+    var fileNames = ['song1.mp3', 'song2.mp3', 'song3.mp3', 'song4.mp3', 'song5.mp3', 'song6.mp3', 'song7.mp3', 'song8.mp3', 'song9.mp3', 'song10.mp3'];
+    var songList = ['Tamma Song', 'Humma Song', 'Nashe Si Chadh Gayi', 'The Breakup Song', 'Chiz bari mast', 'Dooriyan', 'Hawa Hawa ', 'High Rated Gabru', 'Teri Call', 'Yaari Ft Deep Jandu'];
+    var artistList = ['Artist #1', 'Artist #2', 'Artist #3', 'Artist #4', 'Neha Kakkar,Udit Narayan', 'Guri','Mika Singh, Prakriti','Guru Randhawa','Harsimran','Guri'];
+    var albumList = ['Badrinath ki Dulhania', 'Ok Jaanu', 'Befikre', 'Ae Dil Hai Mushkil', 'Machine', 'geetmp3.com','Mubarakan','High Rated Gabru','Teri Call','geetmp3.com'];
+    var durationList = ['2:56', '3:15', '2:34', '2:29','2:12','3:45','4:32','3:34','3:32','3:15'];
 
 
 
@@ -173,8 +212,8 @@
         }
       });
     }
-    for (var i = 0; i < fileNames.length+1; i++) {
-      addSongNameClickEvent(fileNames[i-1], i)
+    for (var i = 0; i < fileNames.length + 1; i++) {
+      addSongNameClickEvent(fileNames[i - 1], i)
     }
     window.onload = function() {
 
