@@ -91,26 +91,42 @@
             <span class="song-album">        </span>
             <span class="song-length pull-right"> </span>
           </div>
-
+        </div><br><br><br><br><br>
+        <div class="current-song-wrapper">
+          <img src="img/song1.jpg" class="current-song-image">
+          <div>
+            <p class="current-song-name">Tamma Tamma Again</p>
+            <p class="current-song-album">Badrinath ki Dulhania</p>
+          </div>
         </div>
       </section>
-      <footer>
-        <div class="controls">
-          <div class="player-buttons">
-            <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
-          </div>
-          <div class="progress-wrapper">
-            <span class="time-elapsed"> </span>
-            <div class="player-progress">
-              <div class="progress-filled">
 
-              </div>
-            </div>
-            <span class="song-duration"></span>
-          </div>
-        </div>
-      </footer>
+      <footer>
+
+
+        <div class="controls">
+          <span class="player-buttons">
+                   <div class="player-buttons">
+                    <i class="fa fa-random clickable disabled" aria-hidden="true"></i>
+                    <i class="fa fa-step-backward clickable" aria-hidden="true"></i>
+                    <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+                    <i class="fa fa-step-forward clickable" aria-hidden="true"></i>
+
+                    <i class="fa fa-repeat disabled clickable" aria-hidden="true"></i>
+                    <i src= "visual.js" class="fa fa-bar-chart  clickable" aria-hidden="true"></i>
+                    </div>
+
+
+                    <div class="progress-wrapper">
+                        <span class="time-elapsed"> </span>
+                        <div class="player-progress">
+                            <div id="progress-filled"> </div>
+                        </div>
+                        <span class="song-duration"></span>
+                    </div>
     </div>
+    </footer>
+  </div>
   </div>
   <script src="jquery.js">
   </script>
@@ -177,12 +193,7 @@
       $('.time-elapsed').text(currentTime);
       $('.song-duration').text(duration);
 
-      song.addEventListener("timeupdate", function() {
 
-        $('.player-progress').stop(true, true).animate({
-          'width': (currentTime + .25) / duration * 100 + '%'
-        }, 250, 'linear');
-      });
     }
 
     window.onload = function() {
@@ -193,9 +204,9 @@
     }
     var fileNames = ['song1.mp3', 'song2.mp3', 'song3.mp3', 'song4.mp3', 'song5.mp3', 'song6.mp3', 'song7.mp3', 'song8.mp3', 'song9.mp3', 'song10.mp3'];
     var songList = ['Tamma Song', 'Humma Song', 'Nashe Si Chadh Gayi', 'The Breakup Song', 'Chiz bari mast', 'Dooriyan', 'Hawa Hawa ', 'High Rated Gabru', 'Teri Call', 'Yaari Ft Deep Jandu'];
-    var artistList = ['Artist #1', 'Artist #2', 'Artist #3', 'Artist #4', 'Neha Kakkar,Udit Narayan', 'Guri','Mika Singh, Prakriti','Guru Randhawa','Harsimran','Guri'];
-    var albumList = ['Badrinath ki Dulhania', 'Ok Jaanu', 'Befikre', 'Ae Dil Hai Mushkil', 'Machine', 'geetmp3.com','Mubarakan','High Rated Gabru','Teri Call','geetmp3.com'];
-    var durationList = ['2:56', '3:15', '2:34', '2:29','2:12','3:45','4:32','3:34','3:32','3:15'];
+    var artistList = ['Artist #1', 'Artist #2', 'Artist #3', 'Artist #4', 'Neha Kakkar,Udit Narayan', 'Guri', 'Mika Singh, Prakriti', 'Guru Randhawa', 'Harsimran', 'Guri'];
+    var albumList = ['Badrinath ki Dulhania', 'Ok Jaanu', 'Befikre', 'Ae Dil Hai Mushkil', 'Machine', 'geetmp3.com', 'Mubarakan', 'High Rated Gabru', 'Teri Call', 'geetmp3.com'];
+    var durationList = ['2:56', '3:15', '2:34', '2:29', '2:12', '3:45', '4:32', '3:34', '3:32', '3:15'];
 
 
 
@@ -229,6 +240,15 @@
       setInterval(function() {
         updateCurrentTime();
       }, 1000);
+    }
+
+    function pbf(){
+      var elm = document.querySelector('audio');
+      var cur = elm.currentTime;
+      var dur = elm.duration;
+      var percentage = (cur/dur)*100;
+      $("#progress-filled").css('width',percentage + "%");
+
     }
   </script>
 </body>
